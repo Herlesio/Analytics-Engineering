@@ -362,14 +362,14 @@ END AS check_1_a1c_clinical_range
 
 | Screenshot | Description |
 |---|---|
-| `s3_bucket_structure.png` | S3 bucket showing raw and curated folder layout |
-| `glue_crawler.png` | Glue Crawler configuration and run status |
-| `glue_data_catalog.png` | Glue Data Catalog showing registered tables |
-| `iam_role.png` | IAM role and attached policies |
-| `athena_view.png` | Athena view query and sample results |
-| `athena_curated_tables.png` | Three curated tables visible in Athena |
-| `quality_checks_results.png` | Quality check summary query results |
-| `quicksight_dashboard.png` | QuickSight dashboard |
+| ![S3 Bucket Structure](screenshots/S3-raw%20and%20curated%20data.png) | S3 bucket showing raw and curated folder layout |
+| ![Glue Crawler](screenshots/crawler.png) | Glue Crawler configuration and run status |
+| ![IAM Role](screenshots/Iam%20role.png) | Glue Data Catalog showing registered tables |
+| ![IAM role](screenshots/Iam%20role.png) | IAM role and attached policies |
+| ![Athena View](screenshots/Athena%20query%20running.png) | Athena view query and sample results |
+| ![Athena Curated Tables](screenshots/Athena%20tables%20in%20database.png) | Three curated tables visible in Athena |
+| ![Quality Checks](screenshots/athena%20data%20quality%20control.png) | Quality check summary query results |
+| ![QuickSight Dashboard](screenshots/Quicksight%20dashboard.png) | QuickSight dashboard |
 
 ---
 
