@@ -204,11 +204,6 @@ Each curated table contains `check_N_*` columns that label every row as `PASS` o
 - **Caching:** SPICE enabled
 - **Visuals:** KPI cards, donut chart, bar charts, heat map, scatter plot
 
-### Tableau Public
-- **Connection:** CSV export from Athena
-- **Tables used:** `patient_summary`, `a1c_metrics`
-- **Published:** Publicly accessible via Tableau Public URL
-
 ---
 
 ## Cost Estimate
@@ -221,7 +216,6 @@ For a dataset of this size (< 100MB total) all services fall within free tier or
 | Glue Crawler | Free tier (first million objects/month) |
 | Athena Queries | < $0.01 total (CSV scan on small dataset) |
 | QuickSight | Free 30-day trial |
-| Tableau Public | Free |
 
 **Total estimated project cost: < $1.00**
 
