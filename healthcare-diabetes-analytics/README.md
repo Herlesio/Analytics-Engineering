@@ -5,7 +5,6 @@
 ![Glue](https://img.shields.io/badge/AWS-Glue-green?logo=amazon-aws)
 ![Athena](https://img.shields.io/badge/Amazon-Athena-blue?logo=amazon-aws)
 ![QuickSight](https://img.shields.io/badge/Amazon-QuickSight-purple?logo=amazon-aws)
-![Tableau](https://img.shields.io/badge/Tableau-Public-lightblue?logo=tableau)
 ![SQL](https://img.shields.io/badge/Language-SQL-lightgrey?logo=postgresql)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
@@ -14,7 +13,7 @@
 ## 
 Project Overview
 
-A fully end-to-end cloud data engineering pipeline built on AWS that ingests raw synthetic healthcare data, applies clinical business logic to classify diabetes and prediabetes patients, enforces data quality standards across 10 automated checks, and delivers interactive analytics dashboards in Amazon QuickSight and Tableau Public.
+A fully end-to-end cloud data engineering pipeline built on AWS that ingests raw synthetic healthcare data, applies clinical business logic to classify diabetes and prediabetes patients, enforces data quality standards across 10 automated checks, and delivers interactive analytics dashboards in Amazon QuickSight.
 
 The pipeline follows a **medallion architecture** pattern — raw CSV files in S3 → schema discovery via Glue Crawler → SQL transformations in Athena → curated Parquet tables → dashboards. No running servers or clusters required; the entire pipeline is serverless.
 
@@ -63,13 +62,13 @@ The pipeline follows a **medallion architecture** pattern — raw CSV files in S
 │         ├── a1c_metrics/        ← Parquet                          │
 │         ├── diabetes_registry/  ← Parquet                          │
 │         └── patient_summary/    ← Parquet                          │
-└──────────────┬──────────────────────────────┬───────────────────────┘
-               │                              │
-               ▼                              ▼
-┌──────────────────────────┐    ┌─────────────────────────────────────┐
-│   AMAZON QUICKSIGHT      │    │         TABLEAU PUBLIC              │
-│   (Live Athena Dataset)  │    │   (CSV export → Public Dashboard)   │
-└──────────────────────────┘    └─────────────────────────────────────┘
+└──────────────┬─────────────────────────────────────────────────────┘
+               │                              
+               ▼                              
+┌──────────────────────────┐    
+│   AMAZON QUICKSIGHT      │    
+│   (Live Athena Dataset)  │    
+└──────────────────────────┘    
 ```
 
 ---
@@ -86,7 +85,6 @@ The pipeline follows a **medallion architecture** pattern — raw CSV files in S
 | Query Engine | Amazon Athena | SQL views, CTAS, quality checks |
 | File Format | Parquet | Curated layer — columnar, compressed |
 | Visualization | Amazon QuickSight | Cloud-native BI dashboard |
-| Visualization | Tableau Public | Public portfolio dashboard |
 | Language | SQL (Trino/Presto) | All transformations and checks |
 
 ---
@@ -122,7 +120,7 @@ healthcare-diabetes-analytics/
     ├── athena_curated_tables.png
     ├── quality_checks_results.png
     ├── quicksight_dashboard.png
-    └── tableau_dashboard.png
+    
 ```
 
 ---
@@ -286,16 +284,16 @@ See full SQL: [`sql/curated/patient_summary.sql`](sql/curated/patient_summary.sq
 
 | Check | Table | Rule | Result |
 |---|---|---|---|
-| 1 | a1c_metrics | A1C between 3.0 and 20.0% | ⚠️ 15 FAIL (synthetic data artifacts) |
-| 2 | a1c_metrics | Patient ID not null | ✅ All PASS |
-| 3 | a1c_metrics | Total readings > 0 | ✅ All PASS |
-| 4 | diabetes_registry | Patient ID not null | ✅ All PASS |
-| 5 | diabetes_registry | Birthdate not in future | ✅ All PASS |
-| 6 | diabetes_registry | Flags are 0 or 1 only | ✅ All PASS |
-| 7 | diabetes_registry | Age between 0 and 120 | ✅ All PASS |
-| 8 | patient_summary | Status is Diabetes or Prediabetes | ✅ All PASS |
-| 9 | patient_summary | A1C value matches category | ✅ All PASS |
-| 10 | patient_summary | No missing A1C data | ✅ All PASS |
+| 1 | a1c_metrics | A1C between 3.0 and 20.0% | 15 FAIL (synthetic data artifacts) |
+| 2 | a1c_metrics | Patient ID not null | All PASS |
+| 3 | a1c_metrics | Total readings > 0 | All PASS |
+| 4 | diabetes_registry | Patient ID not null | All PASS |
+| 5 | diabetes_registry | Birthdate not in future | All PASS |
+| 6 | diabetes_registry | Flags are 0 or 1 only | All PASS |
+| 7 | diabetes_registry | Age between 0 and 120 | All PASS |
+| 8 | patient_summary | Status is Diabetes or Prediabetes | All PASS |
+| 9 | patient_summary | A1C value matches category | All PASS |
+| 10 | patient_summary | No missing A1C data | All PASS |
 
 > **Check 1 finding:** 15 patients had A1C values below 3.0% — clinically impossible in a living patient. These are artifacts of Synthea's data generation algorithm. Records are flagged as `FAIL` and retained (not deleted) following production pipeline best practices.
 
@@ -312,14 +310,6 @@ Connected directly to Athena via the Glue Data Catalog. SPICE caching enabled fo
 - KPI cards — Total Patients, Diabetes Count, Prediabetes Count, Average A1C
 - Donut chart — Diagnosis distribution (Diabetes vs Prediabetes)
 - Bar chart — Patients by generation
-- Bar chart — Patients by race
-- Heat map — Diabetes cases by city in Massachusetts
-- Scatter plot — City-level A1C average vs case volume (Massachusetts)
-
-#### Tableau Public
-Data exported from Athena as CSV and published to Tableau Public for public portfolio access.
-
-🔗 **[View Live Tableau Dashboard](#)** ← *(add your Tableau Public URL here)*
 
 ---
 
@@ -380,7 +370,6 @@ END AS check_1_a1c_clinical_range
 | `athena_curated_tables.png` | Three curated tables visible in Athena |
 | `quality_checks_results.png` | Quality check summary query results |
 | `quicksight_dashboard.png` | QuickSight dashboard |
-| `tableau_dashboard.png` | Tableau Public dashboard |
 
 ---
 
@@ -392,16 +381,15 @@ END AS check_1_a1c_clinical_range
 - **Data Quality Engineering** — 10 embedded checks across 3 tables with PASS/FAIL labeling
 - **Healthcare Domain Knowledge** — ADA clinical A1C thresholds, EHR data modeling
 - **IAM Security** — least-privilege role scoped to project bucket
-- **Data Visualization** — QuickSight and Tableau Public dashboards
+- **Data Visualization** — QuickSight dashboards
 - **Production Mindset** — flagging bad data rather than silently dropping it
 
 ---
 
 ## Author
 
-**Herlesio**
+**Herlesio Coxi**
 Data Engineer | GCP · AWS · Python · SQL · ETL Pipelines
 
 🔗 [LinkedIn](https://www.linkedin.com/in/herlesio-coxi/)
-🔗 [Tableau Public Dashboard](#) ← *(add your Tableau Public URL)*
 
