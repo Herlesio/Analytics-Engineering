@@ -206,7 +206,7 @@ An Athena SQL view `patient_diabetes_summary` was created, joining all three raw
 - `CASE` with generational birth year ranges — Baby Boomers through Gen Alpha
 - Race normalization — Hawaiian → Polynesian
 
-See full SQL: [`sql/views/patient_diabetes_summary.sql`](sql/views/patient_diabetes_summary.sql)
+See full SQL: [`sql/views/patient_diabetes_summary.sql`](healthcare-diabetes-analytics/sql/views/patient_diabetes_summary.sql)
 
 ---
 
@@ -241,7 +241,7 @@ Aggregated A1C lab history per patient from the `observations` table.
 | `total_readings` | Count of all A1C readings |
 | `latest_a1c_category` | Diabetic / Prediabetic / Normal Range |
 
-See full SQL: [`sql/curated/a1c_metrics.sql`](sql/curated/a1c_metrics.sql)
+See full SQL: [`sql/curated/a1c_metrics.sql`](healthcare-diabetes-analytics/sql/curated/a1c_metrics.sql)
 
 #### Table 2: `diabetes_registry`
 Patient demographics enriched with diagnosis flags from the `conditions` table.
@@ -256,7 +256,7 @@ Patient demographics enriched with diagnosis flags from the `conditions` table.
 | `diabetes_flag` | 1 if diabetes condition exists |
 | `prediabetes_flag` | 1 if prediabetes condition exists |
 
-See full SQL: [`sql/curated/diabetes_registry.sql`](sql/curated/diabetes_registry.sql)
+See full SQL: [`sql/curated/diabetes_registry.sql`](healthcare-diabetes-analytics/sql/curated/diabetes_registry.sql)
 
 #### Table 3: `patient_summary`
 Master analytics table joining `diabetes_registry` and `a1c_metrics`. Primary table used for dashboards.
@@ -270,7 +270,7 @@ Master analytics table joining `diabetes_registry` and `a1c_metrics`. Primary ta
 | `generation` | Generational cohort |
 | `diagnosis_date` | Earliest diagnosis date |
 
-See full SQL: [`sql/curated/patient_summary.sql`](sql/curated/patient_summary.sql)
+See full SQL: [`sql/curated/patient_summary.sql`](healthcare-diabetes-analytics/sql/curated/patient_summary.sql)
 
 ---
 
@@ -297,7 +297,7 @@ See full SQL: [`sql/curated/patient_summary.sql`](sql/curated/patient_summary.sq
 
 > **Check 1 finding:** 15 patients had A1C values below 3.0% — clinically impossible in a living patient. These are artifacts of Synthea's data generation algorithm. Records are flagged as `FAIL` and retained (not deleted) following production pipeline best practices.
 
-See full SQL: [`sql/quality_checks/athena_quality_checks.sql`](sql/quality_checks/athena_quality_checks.sql)
+See full SQL: [`sql/quality_checks/athena_quality_checks.sql`](healthcare-diabetes-analytics/sql/quality_checks/athena_quality_checks.sql)
 
 ---
 
