@@ -298,7 +298,7 @@ agg = agg[final_cols]
 # 10. SAVE
 # ─────────────────────────────────────────────
 agg.to_csv(OUTPUT_PATH, index=False)
-print(f"\n✅ Done! {len(agg):,} rows → {OUTPUT_PATH}")
+print(f" Done! {len(agg):,} rows → {OUTPUT_PATH}")
 print(f"   Unique players: {agg['playerName'].nunique():,}")
 
 # ─────────────────────────────────────────────
