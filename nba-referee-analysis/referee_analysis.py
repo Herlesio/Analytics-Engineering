@@ -133,7 +133,7 @@ pivot["total_games_officiated"] = (
 )
 pivot = pivot.sort_values("total_games_officiated", ascending=False).reset_index(drop=True)
 
-print(f"\n✅ Analysis complete — {len(pivot)} referees")
+print(f"\n Analysis complete — {len(pivot)} referees")
 
 # Clean column names (consistent with Delta version)
 pivot.columns = (
@@ -150,7 +150,7 @@ pivot.columns = (
 # 7. SAVE OUTPUT CSV
 # ─────────────────────────────────────────────
 pivot.to_csv(OUTPUT_CSV, index=False)
-print(f"✅ Saved {OUTPUT_CSV}")
+print(f" Saved {OUTPUT_CSV}")
 
 # ─────────────────────────────────────────────
 # 8. VISUALIZATIONS
@@ -176,7 +176,7 @@ ax.legend()
 plt.tight_layout()
 plt.savefig(f"{CHARTS_DIR}/games_officiated.png", dpi=150, bbox_inches="tight")
 plt.show()
-print(f"✅ Saved {CHARTS_DIR}/games_officiated.png")
+print(f" Saved {CHARTS_DIR}/games_officiated.png")
 
 # ── Chart 2: Home Win % by Referee (30+ Regular Season games) ──
 rs = pivot[pivot["Regular_Season_games_officiated"] >= 30].copy()
@@ -201,7 +201,7 @@ ax.legend()
 plt.tight_layout()
 plt.savefig(f"{CHARTS_DIR}/home_win_pct.png", dpi=150, bbox_inches="tight")
 plt.show()
-print(f"✅ Saved {CHARTS_DIR}/home_win_pct.png")
+print(f" Saved {CHARTS_DIR}/home_win_pct.png")
 
 # ── Chart 3: Winner vs Loser Foul Distribution (20+ Regular Season games) ──
 rs = pivot[pivot["Regular_Season_games_officiated"] >= 20].copy()
@@ -231,6 +231,6 @@ ax.legend()
 plt.tight_layout()
 plt.savefig(f"{CHARTS_DIR}/foul_scatter.png", dpi=150, bbox_inches="tight")
 plt.show()
-print(f"✅ Saved {CHARTS_DIR}/foul_scatter.png")
+print(f" Saved {CHARTS_DIR}/foul_scatter.png")
 
-print("\n✅ All done. Output CSV and 3 charts saved.")
+print("\n All done. Output CSV and 3 charts saved.")
