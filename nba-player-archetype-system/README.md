@@ -1,4 +1,4 @@
-# 🏀 NBA Player Archetype Classification System
+# NBA Player Archetype Classification System
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
 ![Databricks](https://img.shields.io/badge/Databricks-Free%20Edition-FF3621?logo=databricks)
