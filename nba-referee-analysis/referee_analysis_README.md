@@ -1,4 +1,4 @@
-# 🏀 NBA Referee Analysis — Data Engineering Pipeline
+# NBA Referee Analysis — Data Engineering Pipeline
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
 ![Databricks](https://img.shields.io/badge/Databricks-Free%20Edition-FF3621?logo=databricks)
@@ -11,7 +11,7 @@
 
 ---
 
-## 📋 Project Overview
+## Project Overview
 
 This project builds an end-to-end data engineering pipeline that ingests raw NBA game and team statistics data, transforms it using Python and PySpark, persists results as a Delta Lake table in Databricks, and surfaces insights through visualizations about NBA referee tendencies.
 
@@ -23,7 +23,7 @@ The analysis answers three questions:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 Kaggle CSV Files (Games.csv, TeamStatisticsExtended.csv)
@@ -53,7 +53,7 @@ Kaggle CSV Files (Games.csv, TeamStatisticsExtended.csv)
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 | File | Description |
 |---|---|
@@ -75,7 +75,7 @@ so each referee gets one row per game they worked.
 
 ---
 
-## 🔧 Pipeline Steps
+## Pipeline Steps
 
 **1. Ingest** — Upload `Games.csv` and `TeamStatisticsExtended.csv` to DBFS via the Catalog UI, then load into Delta tables (`games`, `team_statistics_extended`) using `spark.read.csv()`. This is a one-time step — re-run only if source data changes.
 
@@ -93,7 +93,7 @@ so each referee gets one row per game they worked.
 
 ---
 
-## 📐 Key Metrics (per referee, per season type)
+## Key Metrics (per referee, per season type)
 
 | Column | Description |
 |---|---|
@@ -110,25 +110,25 @@ so each referee gets one row per game they worked.
 
 ---
 
-## 📈 Visualizations
+## Visualizations
 
 ### Games Officiated — Top 20 Referees
-![Games Officiated](charts/games_officiated.png)
+![Games_officiated](charts/games_officiated.png)
 
 ### Home Win % by Referee — Regular Season
 Red = above 55% (home-favoring) | Blue = below 45% (away-favoring) | Minimum 30 games officiated
 
-![Home Win %](charts/home_win_pct.png)
+![Home_win_%](charts/home_win_pct.png)
 
 ### Winner vs Loser Foul Distribution
 Bubble size = games officiated | Minimum 20 games officiated
 Referees near the center (50/50) call fouls evenly between winners and losers.
 
-![Foul Scatter](charts/foul_scatter.png)
+![Foul_scatter](charts/foul_scatter.png)
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 nba-referee-analysis/
@@ -143,7 +143,7 @@ nba-referee-analysis/
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 **In Databricks Free Edition:**
 
@@ -164,7 +164,7 @@ Update the file paths at the top of `referee_analysis.py` to point to your local
 
 ---
 
-## ✅ What This Project Demonstrates
+## What This Project Demonstrates
 
 - Cloud-native ingestion: raw CSV → Delta Lake table via Databricks Catalog
 - PySpark DataFrame operations and schema inference
@@ -177,7 +177,7 @@ Update the file paths at the top of `referee_analysis.py` to point to your local
 
 ---
 
-## 👤 Author
+## Author
 
 **Herlesio**
-Data Engineer · [GitHub](https://github.com/Herlesio)
+Data Engineer · [LinkedIn](https://www.linkedin.com/in/herlesio-coxi/)
