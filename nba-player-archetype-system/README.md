@@ -140,17 +140,17 @@ Per-36 metrics (Pts/Reb/Ast per 36 minutes) ranked within each position group:
 ## Visualizations
 
 ### Role Distribution — Regular Season
-![Role Distribution](charts/Role_distribution.png)
+![Role Distribution](Charts/Role_distribution.png)
 
 ### Minutes vs Points (colored by Role Classification)
 Dashed reference lines mark the classification boundaries — shows the minutes-first philosophy visually across the full player population.
 
-![Minutes vs Points](charts/Minutes_vs_points.png)
+![Minutes vs Points](Charts/Minutes_vs_points.png)
 
 ### Player Skill Profile
 Change the `PLAYER_NAME` variable in the notebook to generate this chart for any player — Regular Season vs Playoffs percentiles side by side.
 
-![Player Skill Profile](charts/Player_skill_profile.png)
+![Player Skill Profile](Charts/Player_skill_profile.png)
 
 **Also available (table-based, no chart):** Playoff Elevators and Shrinkers — ranks every player by how much their scoring percentile changed between Regular Season and Playoffs. Rendered as an interactive `display()` table in the notebook rather than a static chart.
 
