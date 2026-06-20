@@ -151,7 +151,7 @@ nba-referee-analysis/
 2. Import `NBA_Referee_Analysis.ipynb` into your Workspace
 3. Run **Cell 1** once to load the CSVs into Delta tables
 4. Run all remaining cells top to bottom — the Delta table and charts are generated automatically
-5. Use the **⬇ Download chart** button below each chart to save the PNGs, then add them to your `charts/` folder
+5. Use the **Download chart** button below each chart to save the PNGs, then add them to your `charts/` folder
 
 **Locally:**
 
