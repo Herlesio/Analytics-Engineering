@@ -113,18 +113,18 @@ so each referee gets one row per game they worked.
 ## Visualizations
 
 ### Games Officiated — Top 20 Referees
-![Games_officiated](charts/games_officiated.png)
+![Games Officiated](nba-referee-analysis/Charts/Games_officiated.png)
 
 ### Home Win % by Referee — Regular Season
 Red = above 55% (home-favoring) | Blue = below 45% (away-favoring) | Minimum 30 games officiated
 
-![Home_win_%](charts/home_win_pct.png)
+![Home Win %](nba-referee-analysis/Charts/Home_win_pct.png)
 
 ### Winner vs Loser Foul Distribution
 Bubble size = games officiated | Minimum 20 games officiated
 Referees near the center (50/50) call fouls evenly between winners and losers.
 
-![Foul_scatter](charts/foul_scatter.png)
+![Foul Scatter](nba-referee-analysis/Charts/Foul_scatter.png)
 
 ---
 
