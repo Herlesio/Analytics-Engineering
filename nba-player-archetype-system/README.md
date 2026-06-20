@@ -11,7 +11,7 @@
 
 ---
 
-## 📋 Project Overview
+## Project Overview
 
 A data engineering pipeline that classifies every NBA player by **role** and **skill profile** using career-aggregated Regular Season and Playoff box score data.
 
@@ -19,7 +19,7 @@ Minutes are the primary driver of role classification — they reflect how much 
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 PlayerStatisticsExtended.csv, Players.csv
@@ -49,7 +49,7 @@ PlayerStatisticsExtended.csv, Players.csv
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 | File | Description |
 |---|---|
@@ -60,7 +60,7 @@ Both files joined on `personId`. Filtered to `Regular Season` and `Playoffs` gam
 
 ---
 
-## 🔧 Pipeline Steps
+## Pipeline Steps
 
 **1. Ingest** — Upload both CSVs to DBFS, load into Delta tables (`player_statistics_extended`, `players`) via `spark.read.csv()`. One-time step.
 
@@ -84,7 +84,7 @@ Both files joined on `personId`. Filtered to `Regular Season` and `Playoffs` gam
 
 ---
 
-## 🏷️ Classification System
+## Classification System
 
 ### Role Tiers
 
@@ -120,7 +120,7 @@ Per-36 metrics (Pts/Reb/Ast per 36 minutes) ranked within each position group:
 
 ---
 
-## 🧠 What This Data Helps You Understand
+## What This Data Helps You Understand
 
 **Player Role & Team Importance** — *"How important was this player to his team?"* Minutes-first classification correctly places defenders and playmakers without penalizing them for not scoring.
 
@@ -137,26 +137,26 @@ Per-36 metrics (Pts/Reb/Ast per 36 minutes) ranked within each position group:
 
 ---
 
-## 📈 Visualizations
+## Visualizations
 
 ### Role Distribution — Regular Season
-![Role Distribution](charts/role_distribution.png)
+![Role Distribution](charts/Role_distribution.png)
 
 ### Minutes vs Points (colored by Role Classification)
 Dashed reference lines mark the classification boundaries — shows the minutes-first philosophy visually across the full player population.
 
-![Minutes vs Points](charts/minutes_vs_points_scatter.png)
+![Minutes vs Points](charts/Minutes_vs_points.png)
 
 ### Player Skill Profile
 Change the `PLAYER_NAME` variable in the notebook to generate this chart for any player — Regular Season vs Playoffs percentiles side by side.
 
-![Player Skill Profile](charts/player_skill_profile.png)
+![Player Skill Profile](charts/Player_skill_profile.png)
 
 **Also available (table-based, no chart):** Playoff Elevators and Shrinkers — ranks every player by how much their scoring percentile changed between Regular Season and Playoffs. Rendered as an interactive `display()` table in the notebook rather than a static chart.
 
 ---
 
-## 📐 Output Schema
+## Output Schema
 
 | Column (pandas) | Column (Delta table) | Description |
 |--------|--------|-------------|
@@ -185,7 +185,7 @@ Change the `PLAYER_NAME` variable in the notebook to generate this chart for any
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 nba-player-archetype-system/
@@ -205,7 +205,7 @@ nba-player-archetype-system/
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 **In Databricks Free Edition:**
 
@@ -213,7 +213,7 @@ nba-player-archetype-system/
 2. Create catalog `players_categorization` and schema `reclassification` (or run `sql/create_tables.sql`)
 3. Import `NBA_Player_Archetype_System.ipynb` into your Workspace
 4. Run all cells top to bottom — the Delta table and charts are generated automatically
-5. Use the **⬇ Download chart** button below each chart to save the PNGs
+5. Use the **Download chart** button below each chart to save the PNGs
 6. Open the SQL Editor and run the queries in `sql/analysis_queries.sql` against the output table
 
 **Locally:**
@@ -234,7 +234,7 @@ OUTPUT_PATH  = "path/to/player_archetype_system.csv"
 
 ---
 
-## 🧩 Key Design Decisions
+## Key Design Decisions
 
 **Why career aggregation instead of per-season?**
 Career aggregation provides a stable, noise-resistant view of what a player *is*. Per-season classification would be more granular but requires handling season-by-season game thresholds differently and is more sensitive to injury-shortened seasons. A per-season version is a natural next iteration of this system.
@@ -250,7 +250,7 @@ Points alone misclassify high-impact, low-scoring players. A coach's decision to
 
 ---
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - **Per-season classification** — replace career aggregation with season-by-season role assignment for higher precision
 - **Player card layout** — one visual card per player combining role badge, skill labels, and percentile bars
@@ -259,7 +259,7 @@ Points alone misclassify high-impact, low-scoring players. A coach's decision to
 
 ---
 
-## ✅ What This Project Demonstrates
+## What This Project Demonstrates
 
 - Career-aggregated data classification with minutes-first business logic
 - Position-normalized percentile ranking (avoiding cross-position bias)
@@ -271,7 +271,7 @@ Points alone misclassify high-impact, low-scoring players. A coach's decision to
 
 ---
 
-## 👤 Author
+## Author
 
 **Herlesio**
-Data Engineer · [GitHub](https://github.com/Herlesio)
+Data Engineer · [LinkedIn](https://www.linkedin.com/in/herlesio-coxi/)
